@@ -26,7 +26,7 @@ export default function Home(GATSBY_USERBASE_TEST_APP_ID) {
       <header></header>
       <main>
         <div id="auth-view">
-          <h1>Login To The TimeShip</h1>
+          <h1>Sign Up For The TimeShip</h1>
           <form id="login-form" onSubmit={handleTimeShipSignUp}>
             <input
               id="signuPUSername"
@@ -40,7 +40,7 @@ export default function Home(GATSBY_USERBASE_TEST_APP_ID) {
               required
               placeholder="pasSword"
             />
-            <input type="submit" value="Sign in" />
+            <input type="submit" value="Sign Up" />
           </form>
           <div id="signup-error"></div>
         </div>
