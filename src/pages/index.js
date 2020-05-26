@@ -2,8 +2,21 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import userbase from "userbase-js"
 
-export default function Home() {
-  userbase.init({ appId: "YOUR_APP_ID" })
+export default function Home(GATSBY_USERBASE_TEST_APP_ID) {
+  userbase.init({ appId: GATSBY_USERBASE_TEST_APP_ID })
+
+  function handleTimeShipSignUp(event) {
+    event.preventDefault()
+    const username = event.target.elements.signuPUSername.value
+    const password = event.target.elements.loginpasSword.value
+
+    userbase
+      .signUp({ username, password, rememberMe: "none" })
+      //.then(user => showTimeShipGoYear(user.username))
+      .catch(
+        event => (document.getElementById("signup-error").innerHTML = event)
+      )
+  }
   return (
     <>
       <Helmet>
@@ -12,7 +25,25 @@ export default function Home() {
       </Helmet>
       <header></header>
       <main>
-        <div>Hello world!</div>
+        <div id="auth-view">
+          <h1>Login To The TimeShip</h1>
+          <form id="login-form" onSubmit={handleTimeShipSignUp}>
+            <input
+              id="signuPUSername"
+              type="text"
+              required
+              placeholder="Username"
+            />
+            <input
+              id="loginpasSword"
+              type="text"
+              required
+              placeholder="pasSword"
+            />
+            <input type="submit" value="Sign in" />
+          </form>
+          <div id="signup-error"></div>
+        </div>
       </main>
     </>
   )
