@@ -1,7 +1,9 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import userbase from "userbase-js"
 
 export default function Home() {
+  userbase.init({ appId: "YOUR_APP_ID" })
   return (
     <>
       <Helmet>
