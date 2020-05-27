@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The TimeShip</title>
+    <script type="text/javascript" src="https://sdk.userbase.com/1/userbase.js"></script>
+
+
+</head>
+
+<body>
+  <!-- Auth View -->
+  <div id="auth-view">
+    <h1>Create an account</h1>
+    <form id="signup-form">
+      <input id="signup-username" type="text" required placeholder="Username">
+      <input id="signup-password" type="password" required placeholder="Password">
+      <input type="submit" value="Create an account">
+    </form>
+    <div id="signup-error"></div>
+  </div>
+
+    <script type="text/javascript">
+        userbase.init({ appId: "8af6" })
+        function handleSignUp(e) {
+    e.preventDefault()
+
+    const username = document.getElementById('signup-username').value
+    const password = document.getElementById('signup-password').value
+
+    userbase.signUp({ username, password, rememberMe: 'none' })
+      .then((user) => alert(`You signed up ${username} !`))
+      .catch((e) => document.getElementById('signup-error').innerHTML = e)
+  }
+
+  document.getElementById('signup-form').addEventListener('submit', handleSignUp)
+    </script>
+</body>
+</html>
+
+<!--
+        <link href="/lillyicon3.png" rel="shortcut icon" type="image/x-icon" >
+    <div id="auth-view">
+    <h1>The TimeShip Sign Up</h1>
+
+    <form id="signup-form" onSubmit={handleTimeShipSignUp}>
+    <div>
+        <label htmlFor="signuPUSername">signuPUSername</label>
+        <input
+        id="signuPUSername"
+        type="text"
+        required
+        placeholder="Username"
+        />
+    </div>
+    <div>
+        <label htmlFor="signuppasSword">signuppasSword</label>
+        <input
+        id="signuppasSword"
+        type="password"
+        required
+        placeholder="pasSword"
+        />
+    </div>
+    <input type="submit" value="Create an account" />
+    </form>
+</div>
+
+
+
+    userbase.init({ appId: "8d37306-b6f5-42d1-95e8-c2f95f366c53" })
+
+  function handleTimeShipSignUp(event) {
+    event.preventDefeult()
+
+    const username = event.target.elements.signuPUSername.value
+    const password = event.target.elements.signuppasSword.value
+    console.log(username)
+    console.log(password)
+
+    userbase
+      .signup({ username, password, rememberMe: "none" })
+      .then(user => alert(`Welcome Reckless!`))
+      .catch(event => event.target.elements.signupError)
+  }
+
+  return ( -->
+
+
