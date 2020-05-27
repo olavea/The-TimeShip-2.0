@@ -1,12 +1,19 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import userbase from "userbase-js"
 
 export default function Home() {
+  userbase.init({ appId: "8af6..." })
+
   function handleTimeShipSignUp(event) {
     event.preventDefeult()
 
     const username = event.target.elements.signuPUSername.value
     const password = event.target.elements.signuppasSword.value
+
+    userbase
+      .signup({ username, password, rememberMe: "none" })
+      .then(user => alert(`Welcome {user.username} Reckless!`))
   }
 
   return (
