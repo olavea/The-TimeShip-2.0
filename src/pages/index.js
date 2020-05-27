@@ -2,6 +2,13 @@ import React from "react"
 import { Helmet } from "react-helmet"
 
 export default function Home() {
+  function handleTimeShipSignUp(event) {
+    event.preventDefeult()
+
+    const username = event.target.elements.signuPUSername.value
+    const password = event.target.elements.signuppasSword.value
+  }
+
   return (
     <>
       <Helmet>
@@ -11,7 +18,24 @@ export default function Home() {
       <header></header>
       <main>
         <div id="auth-view">
-          <div>Hello Ruby Reckless!</div>
+          <h1>The TimeShip Sign Up</h1>
+
+          <form id="signup-form" onSubmit={handleTimeShipSignUp}>
+            <input
+              id="signuPUSername"
+              type="text"
+              required
+              placeholder="Username"
+            />
+            <input
+              id="signuppasSword"
+              type="text"
+              required
+              placeholder="pasSword"
+            />
+            <button type="submit">Sign Up</button>
+          </form>
+          <div id="signup-error"></div>
         </div>
       </main>
     </>
