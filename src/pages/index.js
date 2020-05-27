@@ -12,10 +12,28 @@ export default function Home(GATSBY_USERBASE_TEST_APP_ID) {
 
     userbase
       .signUp({ username, password, rememberMe: "none" })
-      //.then(user => showTimeShipGoYear(user.username))
+      .then(user => showTimeShipGoYear(user.username))
       .catch(
         event => (document.getElementById("signup-error").innerHTML = event)
       )
+  }
+
+  function showTimeShipGoYear(user) {
+    document.getElementById("goyears").innerText = "1554"
+
+    userbase.openDatabase({ databaseName: "goyears", changeHandler })
+    //.catch(e => (document.getElementById("db-error").innerText = e))
+  }
+  function changeHandler(items) {
+    document.getElementById("db-loading").style.display = "none"
+
+    const todosList = document.getElementById("todos")
+
+    if (items.length === 0) {
+      // render "Empty"
+    } else {
+      // render Go-Year
+    }
   }
   return (
     <>
