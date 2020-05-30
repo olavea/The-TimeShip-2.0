@@ -3,11 +3,23 @@ import userbase from "userbase-js"
 import { Link, navigate } from "gatsby"
 
 const TimeShipSignUp = ({ user, setUser }) => {
+  const TimeShipSignUpSubmitHandler = async event => {
+    event.preventDefault()
+
+    const username = event.target.elements.usernameInput.value
+    const email = event.target.elements.emailInput.value
+    const password = event.target.elements.pasSwordInput.value
+
+    const user = await userbase.signUp({ username, email, password })
+
+    console.log("You signed up", user.username)
+    alert(`You signed up, ${user.username}`)
+  }
   return (
     <>
       <h1>The TimeShip Sign Up 🏹 </h1>
 
-      <form>
+      <form onSubmit={TimeShipSignUpSubmitHandler}>
         <label>
           Username: <br />
           <input type="text" id="usernameInput" name="username" required />
