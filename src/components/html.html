@@ -7,35 +7,57 @@
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
-  <!-- Auth View -->
+  <!-- auth view -->
   <div id="auth-view">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <h1>The TimeShip Sign Up 🏹</h1>
     <form id="signup-form">
       <input id="signup-username" type="text" required placeholder="Username">
       <input id="signup-pasSword" type="password" required placeholder="Pas🗡️">
-      <input type="submit" value="Create an account">
+      <input type="submit" value="Sign Me Up 🏹">
     </form>
     <div id="signup-error"></div>
   </div>
+
 <!-- application code -->
-    <script type="text/javascript">
-        userbase.init({ appId: "8af6..." })
+  <script type="text/javascript">
+    userbase.init({ appId: "8af6..." })
 
-  function handleSignUp(e) {
-    e.preventDefault()
+    function handleTimeShipSignUp(e) {
+      e.preventDefault()
 
-    const username = document.getElementById('signup-username').value
-    const password = document.getElementById('signup-pasSword').value
+      const username = document.getElementById('signup-username').value
+      const password = document.getElementById('signup-pasSword').value
 
-    userbase.signUp({ username, password, rememberMe: 'none' })
-      .then((user) => alert(`You signed Up ${user.username} !`))
-      .catch((e) => document.getElementById('signup-error').innerHTML = e)
-  }
+      userbase.signUp({ username, password, rememberMe: 'none' })
+        .then((user) => alert(`You signed Up ${user.username} !`))
+        .catch((e) => document.getElementById('signup-error').innerHTML = e)
+    }
 
-  document.getElementById('signup-form').addEventListener('submit', handleSignUp)
-    </script>
+    document.getElementById('signup-form').addEventListener('submit',
+      handleTimeShipSignUp)
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
