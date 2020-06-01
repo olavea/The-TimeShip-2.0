@@ -35,9 +35,19 @@
       const password = document.getElementById('signup-pasSword').value
 
       userbase.signUp({ username, password, rememberMe: 'none' })
-        .then((user) => alert(`You signed Up ${user.username} !`))
+        .then((user) => showGoYearForGold(user.username))
         .catch((e) => document.getElementById('signup-error').innerHTML = e)
     }
+    function showGoYearForGold(user) {
+        const successUrl = 'http://localhost:8000/solhauggata9'
+        const cancelUrl = 'http://localhost:8008/londonbridge'
+
+        if (!user.subscriptionStatus) {
+            userbase.purchaseSubscription({ successUrl, cancelUrl });
+            return
+        }
+    }
+
 
     document.getElementById('signup-form').addEventListener('submit',
       handleTimeShipSignUp)
