@@ -25,7 +25,6 @@
   </div>
   <!-- go-year view -->
   <div id="go-year-view">
-    <br>
     <h1>Go-Year List</h1>
     <form id="add-go-year-form">
       <input id="add-go-year" type="text" required placeholder="Go-Year">
@@ -63,9 +62,8 @@
 
       userbase.insertItem({ databaseName: 'goyears', item: {'goyear': goyear}})
         .then(() => document.getElementById('add-go-year').value = '')
-        .catch((event) => document.getElementById('add-go-year-error').innerHTML = e)
+        .catch((event) => document.getElementById('add-go-year-error').innerHTML = event)
     }
-
 
     document.getElementById('signup-form').addEventListener('submit',
       handleTimeShipSignUp)
