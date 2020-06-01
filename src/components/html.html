@@ -56,10 +56,20 @@
             return
         }
     }
+    function addGoYearHandler(event) {
+      event.preventDefault()
+
+      const goyear = document.getElementById('add-go-year').value
+
+      userbase.insertItem({ databaseName: 'goyears', item: {'goyear': goyear}})
+        .then(() => document.getElementById('add-go-year').value = '')
+        .catch((event) => document.getElementById('add-go-year-error').innerHTML = e)
+    }
 
 
     document.getElementById('signup-form').addEventListener('submit',
       handleTimeShipSignUp)
+    document.getElementById('add-go-year-form').addEventListener('submit', addGoYearHandler)
   </script>
 </body>
 </html>
