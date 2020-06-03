@@ -18,6 +18,7 @@
     <h1>The TimeShip Sign Up 🏹</h1>
     <form id="signup-form">
       <input id="signup-username" type="text" required placeholder="Username">
+      <input id="signup-location" type="text" required placeholder="Email">
       <input id="signup-pasSword" type="password" required placeholder="Pas🗡️">
       <input type="submit" value="Sign Me Up 🏹">
     </form>
@@ -40,15 +41,16 @@
       e.preventDefault()
 
       const username = document.getElementById('signup-username').value
+      const email = document.getElementById('signup-location').value
       const password = document.getElementById('signup-pasSword').value
 
-      userbase.signUp({ username, password, rememberMe: 'none' })
+      userbase.signUp({ username, email, password, rememberMe: 'none' })
         .then((user) => showGoYearForGold(user.username))
         .catch((e) => document.getElementById('signup-error').innerHTML = e)
     }
     function showGoYearForGold(user) {
-        const successUrl = 'http://localhost:8000/solhauggata9'
-        const cancelUrl = 'http://localhost:8008/londonbridge'
+        const successUrl = 'https://github.com/olavea/The-TimeShip-2.0/issues/19'
+        const cancelUrl = 'https://github.com/olavea/The-TimeShip-2.0/issues/3'
 
         if (!user.subscriptionStatus) {
             userbase.purchaseSubscription({ successUrl, cancelUrl });
