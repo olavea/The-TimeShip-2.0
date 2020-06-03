@@ -10,28 +10,17 @@
   <!-- auth view -->
   <div id="auth-view">
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <h1>The TimeShip Sign Up 🏹</h1>
     <form id="signup-form">
       <input id="signup-username" type="text" required placeholder="Username">
+      <br>
       <input id="signup-location" type="text" required placeholder="Email">
+      <br>
       <input id="signup-pasSword" type="password" required placeholder="Pas🗡️">
+      <br>
       <input type="submit" value="Sign Me Up 🏹">
     </form>
     <div id="signup-error"></div>
-  </div>
-  <!-- go-year view -->
-  <div id="go-year-view">
-    <h1>Go-Year List</h1>
-    <form id="add-go-year-form">
-      <input id="add-go-year" type="text" required placeholder="Go-Year">
-      <input type="submit" value="Add">
-    </form>
-    <div  id="add-go-year-error"></div>
   </div>
 <!-- application code -->
   <script type="text/javascript">
@@ -51,25 +40,13 @@
     function showGoYearForGold(user) {
         const successUrl = 'https://github.com/olavea/The-TimeShip-2.0/issues/19'
         const cancelUrl = 'https://github.com/olavea/The-TimeShip-2.0/issues/3'
-
         if (!user.subscriptionStatus) {
             userbase.purchaseSubscription({ successUrl, cancelUrl });
             return
         }
     }
-    function addGoYearHandler(event) {
-      event.preventDefault()
-
-      const goyear = document.getElementById('add-go-year').value
-
-      userbase.insertItem({ databaseName: 'goyears', item: {'goyear': goyear}})
-        .then(() => document.getElementById('add-go-year').value = '')
-        .catch((event) => document.getElementById('add-go-year-error').innerHTML = event)
-    }
-
     document.getElementById('signup-form').addEventListener('submit',
       handleTimeShipSignUp)
-    document.getElementById('add-go-year-form').addEventListener('submit', addGoYearHandler)
   </script>
 </body>
 </html>
