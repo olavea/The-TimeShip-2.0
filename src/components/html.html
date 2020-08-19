@@ -10,20 +10,18 @@
   <!-- auth view -->
   <div id="auth-view">
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <h1>The TimeShip Sign Up 🏹</h1>
     <form id="signup-form">
       <input id="signup-username" type="text" required placeholder="Username">
+      <br>
+      <input id="signup-location" type="text" required placeholder="Email">
+      <br>
       <input id="signup-pasSword" type="password" required placeholder="Pas🗡️">
+      <br>
       <input type="submit" value="Sign Me Up 🏹">
     </form>
     <div id="signup-error"></div>
   </div>
-
 <!-- application code -->
   <script type="text/javascript">
     userbase.init({ appId: "8af6..." })
@@ -32,13 +30,21 @@
       e.preventDefault()
 
       const username = document.getElementById('signup-username').value
+      const email = document.getElementById('signup-location').value
       const password = document.getElementById('signup-pasSword').value
 
-      userbase.signUp({ username, password, rememberMe: 'none' })
-        .then((user) => alert(`You signed Up ${user.username} !`))
+      userbase.signUp({ username, email, password, rememberMe: 'none' })
+        .then((user) => showGoYearForGold(user.username))
         .catch((e) => document.getElementById('signup-error').innerHTML = e)
     }
-
+    function showGoYearForGold(user) {
+        const successUrl = 'https://github.com/olavea/The-TimeShip-2.0/issues/19'
+        const cancelUrl = 'https://github.com/olavea/The-TimeShip-2.0/issues/3'
+        if (!user.subscriptionStatus) {
+            userbase.purchaseSubscription({ successUrl, cancelUrl });
+            return
+        }
+    }
     document.getElementById('signup-form').addEventListener('submit',
       handleTimeShipSignUp)
   </script>
